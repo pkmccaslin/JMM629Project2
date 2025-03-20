@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function updateTotal() {
     //iterates through all sliders and adds them up
     totalBudgetUsed = Array.from(sliders).reduce((sum, slider) => sum + parseFloat(slider.value), 0);
-    trackerText.innerHTML = `You have used <br> $${totalBudgetUsed}B out of $${totalBudget}B`;
+    trackerText.innerHTML = `You have used <br> <span class="dollars">$${totalBudgetUsed}B</span> out of <span class="dollars">$${totalBudget}B</span>`;
     budgetBar.value = totalBudgetUsed;
   }
 
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Update the slider's value display
       let valueDisplay = event.target.parentElement.querySelector(".value-input");
       if (valueDisplay) {
-        valueDisplay.textContent = event.target.value.replace(/\.0$/, ""); // Remove trailing .0
+        valueDisplay.textContent = `$${event.target.value.replace(/\.0$/, "")}B`;
       }
     });
 
