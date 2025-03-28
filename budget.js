@@ -70,4 +70,34 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener('scroll', () => {
     intro.style.opacity = 100 / window.scrollY * rate;
   });
+
+  const checkbox = document.getElementById("toggle-hints");
+  checkbox.addEventListener("change", (event) => {
+    if (event.target.checked) {
+      document.querySelector("#education-budget")
+        .style
+        .background = `linear-gradient(to right,rgb(0, 103, 27) 0%, rgb(0, 103, 27) 36%, #D3E0F9 36%, #D3E0F9 100%)`;
+
+        document.querySelector("#health-budget")
+        .style
+        .background = `linear-gradient(to right,rgb(0, 103, 27) 0%, rgb(0, 103, 27) 66%, #D3E0F9 66%, #D3E0F9 100%)`;
+
+        document.querySelector("#safety-budget")
+        .style
+        .background = `linear-gradient(to right,rgb(0, 103, 27) 0%, rgb(0, 103, 27) 12%, #D3E0F9 12%, #D3E0F9 100%)`;
+
+        document.querySelector("#higher-ed-budget")
+        .style
+        .background = `linear-gradient(to right,rgb(0, 103, 27) 0%, rgb(0, 103, 27) 28%, #D3E0F9 28%, #D3E0F9 100%)`;
+
+        document.querySelector("#transportation-budget")
+        .style
+        .background = `linear-gradient(to right,rgb(0, 103, 27) 0%, rgb(0, 103, 27) 20%, #D3E0F9 20%, #D3E0F9 100%)`;
+
+      } else {
+      budgetSliders.forEach((slider) => {
+        slider.style.background = ""; // Reset to default
+      });
+    }
+  });
 });

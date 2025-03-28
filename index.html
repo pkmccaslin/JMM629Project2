@@ -51,6 +51,10 @@
       text-align: left;
     }
 
+    .instructions {
+      font-weight: bold;
+    }
+
     .money-tracker {
       position: sticky;
       top: 0;
@@ -77,11 +81,51 @@
       width: 100%;
     } */
 
-    .instructions {
-      font-weight: bold;
-      text-align: left;
+    #get-a-hint {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 15px;
+      width: 100%;
     }
 
+    #toggle-hints {
+      flex-grow: 0;
+      vertical-align: center;
+      appearance: none;
+      /* Removes the default browser styling */
+      width: 0;
+      height: 0;
+      position: absolute;
+      display: inline-block;
+      width: 40px;
+      /* Adjust size */
+      height: 40px;
+      border-radius: 8px;
+      /* Optional: rounded edges */
+      border: 2px solid #ccc;
+      /* Border color */
+      background-color: white;
+      /* Default background */
+      position: relative;
+      cursor: pointer;
+      transition: opacity 0.5s;
+    }
+
+    #toggle-hints:hover {
+      transition: opacity 0.5s;
+      opacity: 70%;
+    }
+
+    #toggle-hints:checked {
+      background-color: #34A853; /* Green fill */
+      border-color: #1e7b37; /* Darker border */
+    }
+
+    #hint-instructions {
+      flex-grow: 1;
+      max-width: 75%;
+    }
 
     .item-title,
     .value-input {
@@ -127,6 +171,7 @@
       outline: none;
       /* Remove outline */
       background: #D3E0F9;
+      /* transition: background 0.5s; */
     }
 
     .budget-slider::-webkit-slider-thumb {
@@ -160,7 +205,6 @@
     }
 
     .budget-items {
-      margin-top: 30vh;
       margin-bottom: 30vh;
     }
 
@@ -204,9 +248,13 @@
       <h2 class="tracker-text"></h2>
       <progress id="budget-bar" max="67"></progress>
     </div>
-    <div class="instructions">
+    <p class="instructions">
       Drag the slider to decide how much of the budget you will spend on a certain category.
       The bar up top will adjust accordingly.
+    </p>
+    <div id="get-a-hint">
+      <input type="checkbox" id="toggle-hints">
+      <p class="instructions" id="hint-instructions"> Need some help? Check the box to reveal last year's budget's. </p>
     </div>
     <div class="budget-items">
       <h3 class="item-title">
@@ -216,7 +264,7 @@
         Includes funding for K-12 education, teacher salaries, and school supplies.
       </p>
       <div class="slider-information">
-        <input class="budget-slider" type="range" min="0" max="67" value="0" step="0.5" data-category="education">
+        <input class="budget-slider" type="range" min="0" max="33.5" value="0" step="0.5" id="education-budget">
         <p class="value-input"></p>
       </div>
     </div>
@@ -229,7 +277,7 @@
         Poisoning Prevention Program.
       </p>
       <div class="slider-information">
-        <input class="budget-slider" type="range" min="0" max="67" value="0" step="0.5" data-category="education">
+        <input class="budget-slider" type="range" min="0" max="33.5" value="0" step="0.5" id="health-budget">
         <p class="value-input"></p>
       </div>
     </div>
@@ -241,7 +289,7 @@
         Includes funding for law enforcement, emergency response, prisons, and fire departments.
       </p>
       <div class="slider-information">
-        <input class="budget-slider" type="range" min="0" max="67" value="0" step="0.5" data-category="education">
+        <input class="budget-slider" type="range" min="0" max="33.5" value="0" step="0.5" id="safety-budget">
         <p class="value-input"></p>
       </div>
     </div>
@@ -254,7 +302,7 @@
 
       </p>
       <div class="slider-information">
-        <input class="budget-slider" type="range" min="0" max="67" value="0" step="0.5" data-category="education">
+        <input class="budget-slider" type="range" min="0" max="33.5" value="0" step="0.5" id="higher-ed-budget">
         <p class="value-input"></p>
       </div>
     </div>
@@ -266,7 +314,7 @@
         Includes funding for the free Charm City Circulator buses, other bus routes, and upkeep of all Maryland roads.
       </p>
       <div class="slider-information">
-        <input class="budget-slider" type="range" min="0" max="67" value="0" step="0.5" data-category="education">
+        <input class="budget-slider" type="range" min="0" max="33.5" value="0" step="0.5" id="transportation-budget">
         <p class="value-input"></p>
       </div>
     </div>
